@@ -9,7 +9,7 @@ def call(String imageName, String awsAccountId, String awsRegion) {
                         withCredentials([[
                             $class: 'AmazonWebServicesCredentialsBinding',
                             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                            credentialsId: 'ecr-role',
+                            credentialsId: 'K8s',
                             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                         ]]) {
                             bat "aws ecr get-login-password --region ${awsRegion} | docker login --username AWS --password-stdin ${awsAccountId}.dkr.ecr.${awsRegion}.amazonaws.com"
